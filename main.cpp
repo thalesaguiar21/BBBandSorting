@@ -66,6 +66,12 @@ void selectionSort(int *vetor, int tamanho){
 //em uma semente. Se for passado a mesma semente, os
 //numeros aleatarios serao os mesmos
 void criarVetor(int tamanhoVetor, int semente){
+	if(vetorQuickSort != NULL)
+		delete[] vetorQuickSort;
+	if(vetorSelectionSort != NULL)
+		delete[] vetorSelectionSort;
+	if(vetorBubbleSort != NULL)
+		delete[] vetorBubbleSort;
   srand (semente);
   vetorQuickSort = new int[tamanhoVetor];
   vetorBubbleSort = new int[tamanhoVetor];
