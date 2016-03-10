@@ -134,8 +134,8 @@ int main(int argc, char *argv[])
   
 	**sorting algorithm**
   
-	t1 = clock()
-	cout << (((float)(t1 - t0)) / CLOCKS_PER_SEC) << endl;
+	t1 = clock();
+	cout << n << ' ' << (((float)(t1 - t0)) / CLOCKS_PER_SEC) << endl;
 	*/
   return 0;
 }
