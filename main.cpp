@@ -18,13 +18,13 @@
 using namespace std;
 
 
-//Vetores usados pelos metodos de ordenacao
+//Arrays used by the sorting methods
 int *vetorQuickSort;
 int *vetorBubbleSort;
 int *vetorSelectionSort;
 int tamanho;
 
-//Funcao usada pelo qsort para comparar dois numeros
+//Compare function used by qsort to compare two elements
 int compare_ints( const void* a, const void* b ) {
      int* arg1 = (int*) a;
      int* arg2 = (int*) b;
@@ -33,7 +33,7 @@ int compare_ints( const void* a, const void* b ) {
      else return 1;
 }
 
-//Algoritmos de ordenacao bubble sort
+//bubble sort algorithm
 void bubbleSort(int *vetor, int tamanho) {
   int aux;
   for (int i = 0; i < tamanho-1; i++) {
@@ -62,9 +62,9 @@ void selectionSort(int *vetor, int tamanho){
 	}
 }
 
-//Observe que os numeros sao gerados aleatorios baseados
-//em uma semente. Se for passado a mesma semente, os
-//numeros aleatarios serao os mesmos
+//Observe that the numbers are randomly generated based
+//on a seed. If its used the same seed,
+//the random numbers will be the same
 void criarVetor(int tamanhoVetor, int semente){
 	if(vetorQuickSort != NULL)
 		delete[] vetorQuickSort;
@@ -88,32 +88,34 @@ int main(int argc, char *argv[])
 {
 	struct timeval t0, t1;
 
-  //Tamanho do vetor
+  //array size
   long int n = 0;
 	while(n <= 300000){
-	if(n==20000)
+	if(n == 500000){
 		return 0;
+	}
 	if(n < 100000){
 		n += 5000;
 	}
 	else if(n < 100000){
 		n += 50000;
 	}
-	/*else{
+	else{
 		n = 500000;
-	}*/
-  //Criar vetor com elementos aleatorios[0,100000]
+	}
+  //Create array with random elements [0, n]
   for(int i = 1; i <= 10; i++){
   criarVetor(n,i);
 
 	gettimeofday(&t0, NULL);
 
-  //Ordenar utilizando quickSort
+  //Sort using quickSort
   //qsort (vetorQuickSort, n, sizeof(int), compare_ints);
   
+  //Sort using selectionSort
   selectionSort(vetorSelectionSort, n);
 
-  //Ordenar utilizando bubleSort
+  //Sort using bubleSort
   //bubbleSort(vetorBubbleSort,n);
 	gettimeofday(&t1, NULL);
 	t1.tv_sec -= t0.tv_sec;
@@ -123,13 +125,14 @@ int main(int argc, char *argv[])
 		t1.tv_sec -= 1;
 	}
 	cout << n << ' ' << (int)t1.tv_sec << '.' << setw(6) << setfill('0') << (int)t1.tv_usec << endl;
-	
+	}
+	}
 	/*
-	Pro clock é só usar:
+	use the following code to check the time with the clock:
   clock_t t0, t1;
   t0 = clock();
   
-  algoritmo de ordenação
+  **sorting algorithm**
   
   t1 = clock();
   printf("%f\n",((float)(t1 - t0)) / CLOCKS_PER_SEC);
