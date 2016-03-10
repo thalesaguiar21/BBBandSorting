@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 		n = 500000;
 	}
   //Create array with random elements [0, n]
-  for(int i = 1; i <= 10; i++){
+	for(int i = 1; i <= 10; i++){
   criarVetor(n,i);
 
 	gettimeofday(&t0, NULL);
@@ -129,13 +129,13 @@ int main(int argc, char *argv[])
 	}
 	/*
 	use the following code to check the time with the clock:
-  clock_t t0, t1;
-  t0 = clock();
+	clock_t t0, t1;
+	t0 = clock();
   
-  **sorting algorithm**
+	**sorting algorithm**
   
-  t1 = clock();
-  printf("%f\n",((float)(t1 - t0)) / CLOCKS_PER_SEC);
+	t1 = clock()
+	cout << (((float)(t1 - t0)) / CLOCKS_PER_SEC) << endl;
 	*/
   return 0;
 }
